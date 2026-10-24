@@ -106,7 +106,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenFolder }) 
             <h1 className="text-lg font-bold tracking-tight text-[var(--color-text-primary)]">
               Sophy Studio
             </h1>
-            <span className="chip text-[11px] font-mono font-semibold">v1.0</span>
+            <span className="chip text-[11px] font-mono font-semibold">v1.1</span>
           </div>
           <p className="section-desc mt-1">
             {t(
@@ -179,7 +179,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenFolder }) 
           <div className="flex items-center gap-2">
             <SparklesIcon className="h-4 w-4 text-[var(--color-accent)]" />
             <h2 className="text-xs font-bold text-[var(--color-text-primary)] uppercase tracking-wider">
-              {t("home.releaseNotesTitle", "v1.0 Güncelleme Notları & Yenilikler")}
+              {t("home.releaseNotesTitle", "v1.1 Güncelleme Notları & Yenilikler")}
             </h2>
           </div>
           <span className="chip text-[10px] font-mono">{t("home.releaseMonth", "Ekim 2026")}</span>

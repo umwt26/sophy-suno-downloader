@@ -1,4 +1,32 @@
 !macro NSIS_HOOK_PREINSTALL
+  ; 1. Terminate any running sophy.exe processes so binaries aren't locked
+  nsExec::Exec 'taskkill /F /IM sophy.exe /T'
+  Sleep 300
+
+  ; 2. Check if legacy machine-wide v0.1.0 exists in Program Files and uninstall it silently
+  IfFileExists "$PROGRAMFILES\Sophy Studio\uninstall.exe" 0 +4
+    ExecWait '"$PROGRAMFILES\Sophy Studio\uninstall.exe" /S _?="$PROGRAMFILES\Sophy Studio"'
+    RMDir /r "$PROGRAMFILES\Sophy Studio"
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Sophy Studio"
+
+  IfFileExists "$PROGRAMFILES\Sophy\uninstall.exe" 0 +4
+    ExecWait '"$PROGRAMFILES\Sophy\uninstall.exe" /S _?="$PROGRAMFILES\Sophy"'
+    RMDir /r "$PROGRAMFILES\Sophy"
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Sophy"
+
+  ; 3. Clean up legacy public & common shortcuts from old machine-wide install
+  Delete "$COMMONDESKTOP\Sophy Studio.lnk"
+  Delete "$COMMONDESKTOP\Sophy.lnk"
+  Delete "$COMMONPROGRAMS\Sophy Studio.lnk"
+  Delete "$COMMONPROGRAMS\Sophy.lnk"
+  Delete "$DESKTOP\Sophy.lnk"
+  Delete "$SMPROGRAMS\Sophy.lnk"
+
+  ; 4. Check if an older currentUser version exists and clean it up before writing new files
+  ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\Sophy Studio" "UninstallString"
+  StrCmp $0 "" +3 0
+  StrCmp $0 "$INSTDIR\uninstall.exe" +2 0
+    ExecWait '$0 /S _?=$LOCALAPPDATA\Sophy Studio'
 !macroend
 
 !macro NSIS_HOOK_POSTINSTALL

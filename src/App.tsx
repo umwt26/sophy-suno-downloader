@@ -352,10 +352,7 @@ export default function App() {
       )}
 
       {updateModalOpen && updateInfo && (
-        <UpdateModal
-          updateInfo={updateInfo}
-          onClose={() => setUpdateModalOpen(false)}
-        />
+        <UpdateModal updateInfo={updateInfo} />
       )}
 
       {toastMessage && <Toast message={toastMessage} />}

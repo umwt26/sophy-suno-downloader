@@ -48,7 +48,13 @@
     "startDownload": "İndirmeyi Başlat",
     "errorTitle": "Bir Arayüz Hatası Oluştu",
     "errorDesc": "İstenen arayüz bileşeni yüklenirken beklenmeyen bir durum oluştu. Stüdyoyu güvenle sıfırlayabilirsiniz.",
-    "errorReset": "Stüdyoyu Yeniden Başlat"
+    "errorReset": "Stüdyoyu Yeniden Başlat",
+    "mandatoryUpdate": "Zorunlu Güncelleme",
+    "updateHeaderTitle": "Yeni Sürüm Kullanıma Hazır",
+    "updateHeaderDesc": "Sophy Studio daha yüksek kararlılık, yeni özellikler ve güvenlik iyileştirmeleriyle güncellendi. Kesintisiz stüdyo deneyimi için lütfen yeni sürüme geçin.",
+    "dataGuaranteedNotice": "Arama geçmişiniz, stüdyo ayarlarınız ve indirilen parçalarınız güvenle korunur.",
+    "updateNowBtn": "Hemen Güncelle",
+    "noNotesAvailable": "Bu sürüm için detaylı not bulunamadı."
   },
   "nav": {
     "home": "Ana Sayfa",
@@ -339,6 +345,7 @@
     "close": "Kapat",
     "delete": "Kaldır",
     "cancel": "İptal",
-    "save": "Kaydet"
+    "save": "Kaydet",
+    "retry": "Yeniden Dene"
   }
 }

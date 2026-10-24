@@ -117,7 +117,7 @@ export const StudioDrawer: React.FC<StudioDrawerProps> = ({
                 <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)]">
                   Sophy Studio
                 </span>
-                <span className="chip text-[10px] font-mono">v1.0</span>
+                <span className="chip text-[10px] font-mono">v1.1</span>
               </div>
               <p className="text-[11px] text-[var(--color-text-secondary)]">
                 {t("app.subtitle", "Ses & Medya Araçları")}

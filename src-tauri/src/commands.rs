@@ -581,13 +581,13 @@ pub async fn send_feedback(
         "Ad Soyad": sender_name,
         "E-posta": sender_email,
         "Mesaj": message.trim(),
-        "Sürüm": "Sophy Studio v1.0 (Windows x64)",
+        "Sürüm": "Sophy Studio v1.1 (Windows x64)",
         "_template": "table"
     });
 
     let resp = client
         .post("https://formsubmit.co/ajax/umutszg46@gmail.com")
-        .header("User-Agent", "SophyStudio/1.0")
+        .header("User-Agent", "SophyStudio/1.1")
         .header("Accept", "application/json")
         .header("Content-Type", "application/json")
         .header("Origin", "https://sophy.studio")
@@ -608,3 +608,28 @@ pub async fn send_feedback(
         Ok("success".to_string())
     }
 }
+
+pub fn cleanup_legacy_installations() {
+    #[cfg(target_os = "windows")]
+    {
+        // Delete legacy machine-wide shortcuts left from v0.1.0 (Public Desktop & ProgramData)
+        let public_desktop = std::path::PathBuf::from(r"C:\Users\Public\Desktop");
+        let _ = std::fs::remove_file(public_desktop.join("Sophy Studio.lnk"));
+        let _ = std::fs::remove_file(public_desktop.join("Sophy.lnk"));
+
+        if let Ok(program_data) = std::env::var("ProgramData") {
+            let common_programs = std::path::PathBuf::from(program_data).join(r"Microsoft\Windows\Start Menu\Programs");
+            let _ = std::fs::remove_file(common_programs.join("Sophy Studio.lnk"));
+            let _ = std::fs::remove_file(common_programs.join("Sophy.lnk"));
+        }
+
+        // If legacy C:\Program Files\Sophy Studio\uninstall.exe exists, invoke silent uninstall
+        let legacy_uninst = std::path::PathBuf::from(r"C:\Program Files\Sophy Studio\uninstall.exe");
+        if legacy_uninst.exists() {
+            let _ = std::process::Command::new(&legacy_uninst)
+                .args(&["/S", r"_?=C:\Program Files\Sophy Studio"])
+                .spawn();
+        }
+    }
+}
+

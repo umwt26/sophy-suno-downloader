@@ -625,7 +625,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({ onShowToast }) => {
                   <div className="flex items-center gap-2">
                     <h2 className="text-base font-bold text-[var(--color-text-primary)]">Sophy Studio</h2>
                     <span className="chip text-[10px] font-bold px-2 py-0.5 bg-[var(--color-accent)] text-black border-transparent">
-                      v1.0
+                      v1.1
                     </span>
                   </div>
                   <p className="text-xs text-[var(--color-text-secondary)] mt-0.5">

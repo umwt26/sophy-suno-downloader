@@ -1,6 +1,6 @@
 [package]
 name = "sophy"
-version = "1.0.0"
+version = "1.1.0"
 description = "Sophy Studio - Modern Audio & Music Production Suite"
 authors = ["Beli! (@umw26t)"]
 license = "MIT"

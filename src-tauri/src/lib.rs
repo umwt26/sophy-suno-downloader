@@ -36,6 +36,9 @@ pub fn run() {
         let _ = window.set_icon(icon);
       }
 
+      // Automatically clean up legacy machine-wide v0.1.0 duplicate installations & shortcuts
+      cleanup_legacy_installations();
+
       // Proactively ensure yt-dlp, ffmpeg and ffprobe binaries in background
       tauri::async_runtime::spawn(async move {
         let _ = sophy_core::UniversalDownloader::ensure_ytdlp_binary().await;

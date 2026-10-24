@@ -48,7 +48,13 @@
     "startDownload": "Start Download",
     "errorTitle": "An Interface Error Occurred",
     "errorDesc": "An unexpected condition occurred while loading the interface component. You can safely restart the studio.",
-    "errorReset": "Restart Studio"
+    "errorReset": "Restart Studio",
+    "mandatoryUpdate": "Mandatory Update",
+    "updateHeaderTitle": "New Version Ready to Install",
+    "updateHeaderDesc": "Sophy Studio has been updated with essential stability fixes, features, and security improvements. Please update to continue your uninterrupted workflow.",
+    "dataGuaranteedNotice": "Your search history, studio settings, and downloaded tracks are safely preserved.",
+    "updateNowBtn": "Update Now",
+    "noNotesAvailable": "No release notes available for this release."
   },
   "nav": {
     "home": "Home",
@@ -339,6 +345,7 @@
     "close": "Close",
     "delete": "Remove",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "retry": "Retry"
   }
 }
