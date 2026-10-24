@@ -42,10 +42,10 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
     } catch (err: unknown) {
       console.error("Auto update failed:", err);
       setUpdating(false);
-      setErrorMsg(
+          setErrorMsg(
         typeof err === "string"
           ? err
-          : t("app.autoUpdateFailed", "Otomatik güncelleme indirilemedi.")
+          : t("app.autoUpdateFailed", "Could not download automatic update.")
       );
     }
   };
@@ -71,7 +71,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
             <div className="flex items-center gap-2.5">
               <span className="flex items-center gap-1.5 rounded-full bg-[var(--color-accent)]/15 border border-[var(--color-accent)]/30 px-3 py-1 text-[11px] font-bold text-[var(--color-accent)] uppercase tracking-wider shadow-sm">
                 <SparklesIcon className="h-3.5 w-3.5 text-[var(--color-accent)]" />
-                {t("app.mandatoryUpdate", "Zorunlu Güncelleme")}
+                {t("app.mandatoryUpdate", "Mandatory Update")}
               </span>
               <div className="flex items-center gap-1.5 font-mono text-xs font-semibold">
                 <span className="chip px-2.5 py-0.5 text-[var(--color-text-secondary)]">{currentVersion}</span>
@@ -88,12 +88,12 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
           </div>
 
           <h1 className="mt-3 text-xl sm:text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
-            {t("app.updateHeaderTitle", "Yeni Sürüm Kullanıma Hazır")}
+            {t("app.updateHeaderTitle", "New Version Ready to Install")}
           </h1>
           <p className="mt-1 text-xs sm:text-sm text-[var(--color-text-secondary)] max-w-2xl leading-relaxed">
             {t(
               "app.updateHeaderDesc",
-              "Sophy Studio daha yüksek kararlılık, yeni özellikler ve güvenlik iyileştirmeleriyle güncellendi. Kesintisiz deneyim için lütfen yeni sürüme geçin."
+              "Sophy Studio has been updated with essential stability fixes, features, and security improvements. Please update to continue your uninterrupted workflow."
             )}
           </p>
         </div>
@@ -104,7 +104,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
             <div className="flex items-center gap-2">
               <DocumentTextIcon className="h-4 w-4 text-[var(--color-accent)]" />
               <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-primary)]">
-                {t("app.releaseNotes", "Yenilikler & Güncelleme Notları")}
+                {t("app.releaseNotes", "Release Notes")}
               </h2>
             </div>
             <span className="text-[11px] text-[var(--color-text-tertiary)] font-mono">
@@ -117,7 +117,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
               <MarkdownRenderer content={updateInfo.release_notes} />
             ) : (
               <p className="text-xs text-[var(--color-text-tertiary)] italic">
-                {t("app.noNotesAvailable", "Bu sürüm için detaylı not bulunamadı.")}
+                {t("app.noNotesAvailable", "No release notes available for this release.")}
               </p>
             )}
           </div>
@@ -132,7 +132,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
             <div className="flex-1 min-w-0">
               <p className="font-bold text-rose-200">{errorMsg}</p>
               <p className="mt-0.5 text-[11px] text-rose-300/80">
-                {t("app.manualWebNotice", "Web sayfasından kurulum dosyasını doğrudan indirebilirsiniz.")}
+                {t("app.manualWebNotice", "You can directly download the setup file from our website.")}
               </p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
             <span className="text-[11px] leading-snug">
               {t(
                 "app.dataGuaranteedNotice",
-                "Arama geçmişiniz, stüdyo ayarlarınız ve indirilen parçalarınız güvenle korunur."
+                "Your search history, studio settings, and downloaded tracks are safely preserved."
               )}
             </span>
           </div>
@@ -160,7 +160,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
                   className="btn btn-secondary text-xs px-4 py-2.5 flex items-center gap-1.5"
                 >
                   <RefreshIcon className="h-3.5 w-3.5" />
-                  <span>{t("common.retry", "Yeniden Dene")}</span>
+                  <span>{t("common.retry", "Retry")}</span>
                 </button>
 
                 <button
@@ -169,7 +169,7 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
                   className="btn btn-primary text-xs px-5 py-2.5 flex items-center gap-2 flex-1 sm:flex-initial"
                 >
                   <ExternalLinkIcon className="h-3.5 w-3.5" />
-                  <span>{t("app.manualDownload", "Manuel İndir (Web)")}</span>
+                  <span>{t("app.manualDownload", "Manual Download (Web)")}</span>
                 </button>
               </>
             ) : (
@@ -182,13 +182,13 @@ export const UpdateModal: React.FC<UpdateModalProps> = ({ updateInfo }) => {
                 {updating ? (
                   <>
                     <LoadingSpinner className="h-4 w-4 animate-spin" />
-                    <span>{t("app.downloadingUpdate", "İndiriliyor ve Hazırlanıyor...")}</span>
+                    <span>{t("app.downloadingUpdate", "Downloading and preparing setup...")}</span>
                   </>
                 ) : (
                   <>
                     <ArrowDownTrayIcon className="h-4 w-4" />
                     <span>
-                      {t("app.updateNowBtn", "Hemen Güncelle")} ({latestVersion})
+                      {t("app.updateNowBtn", "Update Now")} ({latestVersion})
                     </span>
                   </>
                 )}
