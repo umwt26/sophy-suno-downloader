@@ -261,10 +261,16 @@ pub struct UpdateCheckResult {
 
 fn compare_semver(latest: &str, current: &str) -> bool {
     let parse = |v: &str| -> Vec<u64> {
-        v.trim_start_matches('v')
+        let clean = v.trim_start_matches('v');
+        let ver_part = clean.split(['-', '+']).next().unwrap_or(clean);
+        let mut nums: Vec<u64> = ver_part
             .split('.')
             .filter_map(|s| s.parse::<u64>().ok())
-            .collect()
+            .collect();
+        while nums.len() < 3 {
+            nums.push(0);
+        }
+        nums
     };
 
     let l = parse(latest);
@@ -277,7 +283,7 @@ fn compare_semver(latest: &str, current: &str) -> bool {
             return false;
         }
     }
-    l.len() > c.len()
+    false
 }
 
 #[tauri::command]
